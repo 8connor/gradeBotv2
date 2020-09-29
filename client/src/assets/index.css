@@ -1,4 +1,4 @@
-body{
-    min-height: 50vh;
-    background: #003366;
+body > *{
+    min-height: 100vh;
+    background-color: #003366;
 }
