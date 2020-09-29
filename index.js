@@ -1,21 +1,16 @@
 const express = require("express");
-const PORT = 3001
+const PORT = 3001;
 const app = express();
 const mongoose = require("mongoose");
 
-mongoose.connect("mongodb://localhost:27017/gradeBotv2");
+const routes = require("./routes")
 
+mongoose.connect("mongodb://localhost:27017/gradeBotv2");
 
 app.use(express.json());
 
-
-app.get("/api/here", (req, res)=>{
-
-    res.json({
-        new: "hello world"
-    })
-})
+app.use("/api/", routes);
 
 app.listen(PORT, (req, res) => {
-    console.log(PORT)
-})
+  console.log(`api route listening on port ${PORT}`);
+});
