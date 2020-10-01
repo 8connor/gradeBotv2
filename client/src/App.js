@@ -1,21 +1,17 @@
 import React from "react";
+import Top from "./components/Top";
+import Home from "./components/Home"
 import Footer from "./components/Footer";
-import Nav from "./components/Nav";
-import Body from "./components/Body";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import "./assets/index.css";
-import LoginCard from "./components/LoginCard";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./assets/css/index.css";
 
 function App() {
   return (
-    <Router>
-      <Nav />
-      {/* this is where we will put components obviously. Ill leave it blank for now */}
-      <Body>
-        <LoginCard />
-      </Body>
+    <>
+      <Top />
+      <Home />
       <Footer />
-    </Router>
+    </>
   );
 }
 

@@ -21,4 +21,8 @@ routes.post("/register", (req, res) =>{
     });
 });
 
+routes.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "../client/public/index.html"));
+})
+
 module.exports = routes;
