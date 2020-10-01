@@ -1,20 +1,25 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import Login from "./Login.js";
-import About from "./About.js";
+import Login from "./Login";
+import About from "./About";
+import Features from "./Features"
 import "animate.css";
 
 function Home() {
+  useEffect(() => {
+    document.documentElement.style.setProperty('--animate-duration', '3s');
+  });
+
   return (
-    <Container className="mt-5">
+    <Container className="">
       <Row>
         <Col
           sm={{ span: 12, offset: 0 }}
           md={{ span: 6, offset: 0 }}
           lg={{ span: 6, offset: 0 }}
-          className="animate__animated animate__fadeIn"
+          className="mt-5 animate__animated animate__fadeIn"
         >
           <Login />
         </Col>
@@ -22,9 +27,17 @@ function Home() {
           sm={{ span: 12 }}
           md={{ span: 6, order: "last" }}
           lg={{ span: 6, order: "last" }}
-          className="animate__animated animate__fadeIn"
+          className="mt-5 animate__animated animate__fadeIn"
         >
           <About />
+        </Col>
+        <Col
+          sm={{ span: 12 }}
+          md={{ span: 6, offset: 6, order: "last" }}
+          lg={{ span: 6, offset: 6, order: "last" }}
+          className="mt-5 animate__animated animate__fadeIn"
+        >
+          <Features />
         </Col>
       </Row>
     </Container>
