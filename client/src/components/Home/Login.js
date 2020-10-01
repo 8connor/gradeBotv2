@@ -44,7 +44,7 @@ function Login() {
               aria-describedby="inputGroup-sizing-default"
             />
           </InputGroup>
-          <Button>Login</Button>
+          <Button>submit</Button>
         </Row>
       </Card.Body>
     </Card>

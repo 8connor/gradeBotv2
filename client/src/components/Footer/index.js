@@ -1,12 +1,11 @@
 import React from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
-import "./index.css";
 
 function Footer() {
   return (
     <div className="footer bg-dark">
-        <Container>
+        <Container className="mt-3">
           <Row className="justify-content-center text-light">
               <p>
                   gradeBot 2020

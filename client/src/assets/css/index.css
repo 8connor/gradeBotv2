@@ -1,0 +1,30 @@
+html,
+body {
+  position: relative;
+  min-height: 100vh;
+}
+
+.bodyCon {
+  padding-bottom: 60px;
+}
+
+.parallax {
+  /* The image used */
+  background-image: url("../images/gradeBotPara.jpg");
+
+  /* Set a specific height */
+  height: 300px;
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+}

@@ -21,7 +21,7 @@ function Top() {
           <Nav.Link href="#about" className="text-light">About</Nav.Link>
         </Nav>
         <Nav>
-          <Nav.Link href="#home" className="text-light">Login</Nav.Link>
+          <Nav.Link href="#home" className="text-light rounded bg-success shadow">Login</Nav.Link>
         </Nav>
       </Navbar.Collapse>
     </Navbar>
