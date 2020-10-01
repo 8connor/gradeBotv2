@@ -13,40 +13,42 @@ function Home() {
   });
 
   return (
-    <div className="parallax">
-      <Container>
-        <Row>
-          <Col
-            sm={{ span: 12, offset: 0 }}
-            md={{ span: 6, offset: 0 }}
-            lg={{ span: 6, offset: 0 }}
-            className="mt-5 animate__animated animate__fadeIn"
-          >
-            <Login />
-          </Col>
-          <Col
-            sm={{ span: 12 }}
-            md={{ span: 6, order: "last" }}
-            lg={{ span: 6, order: "last" }}
-            className="mt-5 animate__animated animate__fadeIn"
-          >
-            <About />
-          </Col>
-        </Row>
-      </Container>
+    <>
+      <div className="parallax">
+        <Container>
+          <Row>
+            <Col
+              sm={{ span: 12, offset: 0 }}
+              md={{ span: 6, offset: 0 }}
+              lg={{ span: 6, offset: 0 }}
+              className="mt-5 animate__animated animate__fadeIn"
+            >
+              <Login />
+            </Col>
+            <Col
+              sm={{ span: 12 }}
+              md={{ span: 6, order: "last" }}
+              lg={{ span: 6, order: "last" }}
+              className="mt-5 animate__animated animate__fadeIn"
+            >
+              <About />
+            </Col>
+          </Row>
+        </Container>
+      </div>
       <Container className="featuresCon">
         <Row>
           <Col
             sm={{ span: 12 }}
             md={{ span: 6, offset: 6 }}
             lg={{ span: 6, offset: 6 }}
-            className="mt-5 animate__animated animate__fadeIn"
+            className="mt-5 mb-5 animate__animated animate__fadeIn"
           >
             <Features />
           </Col>
         </Row>
       </Container>
-    </div>
+    </>
   );
 }
 

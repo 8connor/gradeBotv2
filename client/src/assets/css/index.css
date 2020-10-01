@@ -2,6 +2,7 @@ html,
 body {
   position: relative;
   min-height: 100vh;
+  background-color: brown;
 }
 
 .bodyCon {
@@ -13,7 +14,7 @@ body {
   background-image: url("../images/gradeBotPara.jpg");
 
   /* Set a specific height */
-  height: 300px;
+  height: 600px;
 
   /* Create the parallax scrolling effect */
   background-attachment: fixed;
