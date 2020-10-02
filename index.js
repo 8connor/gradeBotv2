@@ -3,6 +3,7 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 
+//routes being brought in from different file. Recognizes index.js.
 const routes = require("./routes")
 
 mongoose.connect("mongodb://localhost:27017/gradeBotv2");

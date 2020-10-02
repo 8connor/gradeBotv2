@@ -2,11 +2,21 @@ html,
 body {
   position: relative;
   min-height: 100vh;
-  background-color: brown;
+  background-color: whitesmoke;
 }
 
 .bodyCon {
+  /* same size as footer */
   padding-bottom: 60px;
+}
+
+.featuresCon{
+ min-height: 100vh;
+ overflow-x: hidden;
+}
+
+#features{
+  margin-top: 10px;
 }
 
 .parallax {
@@ -14,7 +24,7 @@ body {
   background-image: url("../images/gradeBotPara.jpg");
 
   /* Set a specific height */
-  height: 600px;
+  min-height: 100vh;
 
   /* Create the parallax scrolling effect */
   background-attachment: fixed;

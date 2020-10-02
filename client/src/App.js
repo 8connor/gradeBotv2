@@ -11,8 +11,10 @@ import Footer from "./components/Footer";
 function App() {
   return (
     <>
+    {/* top = navbar */}
       <Top />
       <Body>
+        {/* home page "/" */}
         <Home />
       </Body>
       <Footer />
