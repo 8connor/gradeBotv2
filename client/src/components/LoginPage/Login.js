@@ -1,12 +1,10 @@
 import React, { useState } from "react";
 import Card from "react-bootstrap/Card";
-import Form from "react-bootstrap/Form";
 import FormControl from "react-bootstrap/FormControl";
 import InputGroup from "react-bootstrap/InputGroup";
 import Button from "react-bootstrap/Button";
-import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
+
 
 function Login() {
     const [email, setEmail] = useState("");

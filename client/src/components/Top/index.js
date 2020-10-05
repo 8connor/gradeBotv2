@@ -6,7 +6,7 @@ import logo from "./logo.png";
 function Top() {
   return (
     <Navbar bg="dark" expand="lg">
-      <Navbar.Brand href="#home">
+      <Navbar.Brand href="/">
         <img
           src={logo}
           className="d-inline-block align-top"
@@ -16,7 +16,7 @@ function Top() {
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
-          <Nav.Link href="#home" className="text-light">Home</Nav.Link>
+          <Nav.Link href="/" className="text-light">Home</Nav.Link>
           <Nav.Link href="#features" className="text-light">Features</Nav.Link>
           <Nav.Link href="#about" className="text-light">About</Nav.Link>
         </Nav>
