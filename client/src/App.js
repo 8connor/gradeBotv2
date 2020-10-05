@@ -8,6 +8,7 @@ import Top from "./components/Top";
 import Body from "./components/Body";
 import Home from "./components/Home";
 import LoginPage from "./components/LoginPage";
+import Dashboard from "./components/Dashboard";
 import Footer from "./components/Footer";
 
 function App() {
@@ -24,6 +25,9 @@ function App() {
             </Route>
             <Route exact path="/login">
               <LoginPage />
+            </Route>
+            <Route exact path="/dashboard">
+              <Dashboard />
             </Route>
           </Switch>
         </Body>

@@ -1,7 +1,7 @@
 import React from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
-import Login from "./Login";
+import Login from "../LoginCard";
 
 function LoginPage() {
   return (
