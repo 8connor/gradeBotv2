@@ -8,7 +8,7 @@ function Footer() {
         <Container className="mt-3">
           <Row className="justify-content-center text-light">
               <p>
-                  gradeBot 2020
+                  gradeBotv2 2020
               </p>
           </Row>
         </Container>

@@ -1,10 +1,10 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./assets/css/index.css";
 
-import Top from "./components/Top";
+import Top from "./components/Header";
 import Body from "./components/Body";
 import Home from "./components/Home";
 import LoginPage from "./components/LoginPage";
