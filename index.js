@@ -4,9 +4,15 @@ const app = express();
 const mongoose = require("mongoose");
 
 //routes being brought in from different file. Recognizes index.js.
-const routes = require("./routes")
+const routes = require("./routes");
 
-mongoose.connect("mongodb://localhost:27017/gradeBotv2");
+mongoose.connect(
+  `mongodb+srv://herokuUser:ABJoMLkYCEZasN6k@cluster0.beusi.mongodb.net/`,
+  { useNewUrlParser: true, useUnifiedTopology: true },
+  () => {
+    console.log("Successfully connected to Database");
+  }
+);
 
 app.use(express.json());
 
