@@ -7,7 +7,7 @@ const mongoose = require("mongoose");
 const routes = require("./routes");
 
 mongoose.connect(
-  `mongodb+srv://herokuUser:ABJoMLkYCEZasN6k@cluster0.beusi.mongodb.net/`,
+  `mongodb://localhost:27017/gradeBotv2`,
   { useNewUrlParser: true, useUnifiedTopology: true },
   () => {
     console.log("Successfully connected to Database");
