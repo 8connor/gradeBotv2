@@ -1,9 +1,14 @@
-const Mongoose = require("mongoose");
+var mongoose = require("mongoose");
+var Schema = mongoose.Schema
 
+const NewsSchema = new Schema(
+  {
+    title: String,
+    contents: String,
+  },
+  { versionKey: false }
+);
 
-const newsSchema = new Mongoose.Schema({
-    message: String
-}, {versionKey: false});
+var News = mongoose.model("News", NewsSchema);
 
-
-module.exports = Mongoose.model("News", newsSchema)
+module.exports = News
