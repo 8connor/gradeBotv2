@@ -1,13 +1,17 @@
 import React from "react";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
 import Averages from "./Averages";
 import News from "./News";
 
 function Dashboard() {
   return (
-    <>
-      <Averages />
-      <News />
-    </>
+    <Container>
+      <Row className="mt-5">
+        <Averages />
+        <News />
+      </Row>
+    </Container>
   );
 }
 

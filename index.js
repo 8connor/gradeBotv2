@@ -16,7 +16,12 @@ mongoose.connect(
 
 app.use(express.json());
 
-app.use("/api", routes);
+app.use("/api", routes.Get);
+app.use("/api", routes.Post);
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../client/public/index.html"));
+})
 
 app.listen(PORT, (req, res) => {
   console.log(`api route listening on port ${PORT}`);

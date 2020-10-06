@@ -27,17 +27,13 @@ function Averages() {
   };
 
   return (
-    <Container>
-      <Row className="mt-5">
-        <Col
-          sm={{ span: 6, offset: 0 }}
-          md={{ span: 6, offset: 0 }}
-          lg={{ span: 6, offset: 0 }}
-        >
-          <CanvasJSChart options={options} />
-        </Col>
-      </Row>
-    </Container>
+    <Col
+      sm={{ span: 6, offset: 0 }}
+      md={{ span: 6, offset: 0 }}
+      lg={{ span: 6, offset: 0 }}
+    >
+      <CanvasJSChart options={options} />
+    </Col>
   );
 }
 
