@@ -1,17 +1,19 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Axios from "axios";
 
 function News() {
-  const [news, setNews] = useState([])
+  const [news, setNews] = useState([]);
 
-  useEffect(async ()=>{
-    const newFunc = async () =>{
-      let newsCall = await Axios.get("/api/news").then(res => res.data);
+  useEffect(() => {
+    const newFunc = async () => {
+      let newsCall = await Axios.get("/api/news").then((res) => res.data);
 
-      return setNews(newsCall)
+      console.log(newsCall);
+
+      return setNews(newsCall);
     };
 
     newFunc();
@@ -29,7 +31,12 @@ function News() {
           <div>News</div>
         </Row>
         <Row>
-          {news}
+          {news.map((article, i) => (
+            <div key={i}>
+              <h1>{article.title}</h1>
+              <p>{article.contents}</p>
+            </div>
+          ))}
         </Row>
       </Container>
     </Col>

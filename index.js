@@ -1,3 +1,4 @@
+const path = require("path")
 const PORT = 3001;
 const express = require("express");
 const app = express();
@@ -21,7 +22,7 @@ app.use("/api", routes.Post);
 
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "../client/public/index.html"));
-})
+});
 
 app.listen(PORT, (req, res) => {
   console.log(`api route listening on port ${PORT}`);

@@ -5,6 +5,10 @@ body {
   background-color: whitesmoke;
 }
 
+::selection{
+  background: #9A0EC6
+}
+
 .bodyCon {
   /* same size as footer */
   padding-bottom: 60px;
