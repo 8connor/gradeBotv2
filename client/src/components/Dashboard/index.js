@@ -7,7 +7,7 @@ import News from "./News";
 function Dashboard() {
   return (
     <Container>
-      <Row className="mt-5">
+      <Row className="mt-5 animate__animated animate__fadeIn">
         <Averages />
         <News />
       </Row>

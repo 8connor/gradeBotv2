@@ -1,4 +1,4 @@
-const path = require("path")
+const path = require("path");
 const PORT = 3001;
 const express = require("express");
 const app = express();
@@ -17,11 +17,15 @@ mongoose.connect(
 
 app.use(express.json());
 
+// if (process.env.NODE_ENV === "production") {
+//   app.use(express.static(path.join(__dirname, "client/build")));
+// }
+
 app.use("/api", routes.Get);
 app.use("/api", routes.Post);
 
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../client/public/index.html"));
+  res.sendFile(path.join(__dirname, "./client/public/index.html"));
 });
 
 app.listen(PORT, (req, res) => {

@@ -4,7 +4,7 @@ import Row from "react-bootstrap/Row";
 
 function Footer() {
   return (
-    <div className="footer bg-dark">
+    <div className="footer bg-dark shadow">
         <Container className="mt-3">
           <Row className="justify-content-center text-light">
               <p>

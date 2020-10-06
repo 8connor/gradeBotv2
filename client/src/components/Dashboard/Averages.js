@@ -1,11 +1,28 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Col from "react-bootstrap/Col";
 import CanvasJSReact from "../../canvasjs.react";
+import Axios from "axios";
 
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
 function Averages() {
+  const [grades, setGrades] = useState([]);
+
+  useEffect(() => {
+    const average = async () => {
+      let averageCall = await Axios.get("/api/averages").then(
+        (res) => res.data
+      );
+
+      setGrades(averageCall);
+    };
+
+    average();
+  }, []);
+
   const options = {
+    animationEnabled: true,
+    theme: "dark2",
     title: {
       text: "Example of student averages",
     },

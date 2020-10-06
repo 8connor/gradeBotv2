@@ -10,6 +10,11 @@ routes.get("/news", (req, res) => {
     });
 });
 
+// routes.get("/averages", (req, res) => {
+    
+//     res.json()
+// })
+
 routes.get("/test", (req, res) => {    
     res.json({hello: "hello world"});
 });

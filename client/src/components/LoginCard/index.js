@@ -5,20 +5,16 @@ import InputGroup from "react-bootstrap/InputGroup";
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 
-
 function Login() {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-    const handleLogin = ()=>{
-
-    };
-
+  const handleLogin = () => {};
 
   return (
     <Card className="shadow">
       <Card.Body>
-        <Card.Title>Login</Card.Title>
+        <Card.Title className="text-center">Login</Card.Title>
         <Row className="justify-content-center">
           <InputGroup className="mb-3">
             <InputGroup.Prepend>

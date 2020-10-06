@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Container from "react-bootstrap/Container";
+import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Axios from "axios";
@@ -19,26 +19,33 @@ function News() {
     newFunc();
   }, []);
 
+  const options = {
+    overflowY: "scroll",
+  };
+
   return (
     <Col
       sm={{ span: 6, offset: 0 }}
       md={{ span: 6, offset: 0 }}
       lg={{ span: 6, offset: 0 }}
-      className="bg-dark rounded shadow text-light"
+      className="bg-dark rounded shadow"
     >
-      <Container>
-        <Row className="justify-content-center mt-5">
-          <div>News</div>
-        </Row>
-        <Row>
-          {news.map((article, i) => (
-            <div key={i}>
-              <h1>{article.title}</h1>
-              <p>{article.contents}</p>
-            </div>
-          ))}
-        </Row>
-      </Container>
+      <Row className="justify-content-center">
+        <h1 className="text-light">News</h1>
+      </Row>
+
+      <section style={options}>
+        {news.map((article, i) => (
+          <article key={i}>
+            <Card className="animate__animated animate__fadeIn">
+              <Card.Body>
+                <Card.Title>{article.title}</Card.Title>
+                <p>{article.contents}</p>
+              </Card.Body>
+            </Card>
+          </article>
+        ))}
+      </section>
     </Col>
   );
 }

@@ -28,7 +28,7 @@ function Features() {
               md={{ span: 6, offset: 0 }}
               lg={{ span: 6, offset: 0 }}
             >
-              <Card className="mt-5">
+              <Card className="mt-5 shadow">
                 <Card.Body>
                   <Card.Title>Grade tracking</Card.Title>
                   <p>The ability to track student grades</p>
@@ -48,7 +48,7 @@ function Features() {
               md={{ span: 6, offset: 6 }}
               lg={{ span: 6, offset: 6 }}
             >
-              <Card className="mt-5">
+              <Card className="mt-5 shadow">
                 <Card.Body>
                   <Card.Title>Messaging</Card.Title>
                   <p>Student and teacher interaction made easy.</p>
@@ -68,7 +68,7 @@ function Features() {
               md={{ span: 6, offset: 0 }}
               lg={{ span: 6, offset: 0 }}
             >
-              <Card className="mt-5">
+              <Card className="mt-5 shadow">
                 <Card.Body>
                   <Card.Title>Classroom creation and management</Card.Title>
                   <p>
@@ -91,7 +91,7 @@ function Features() {
               md={{ span: 6, offset: 6 }}
               lg={{ span: 6, offset: 6 }}
             >
-              <Card className="mt-5">
+              <Card className="mt-5 shadow">
                 <Card.Body>
                   <Card.Title>Assignment creation and tracking</Card.Title>
                   <p>
