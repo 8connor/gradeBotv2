@@ -21,23 +21,26 @@ function News() {
 
   const options = {
     overflowY: "scroll",
+    maxHeight: "400px",
+    minHeight: "400px"
   };
 
   return (
     <Col
-      sm={{ span: 6, offset: 0 }}
-      md={{ span: 6, offset: 0 }}
-      lg={{ span: 6, offset: 0 }}
-      className="bg-dark rounded shadow"
+      sm={{ span: 4, offset: 0 }}
+      md={{ span: 4, offset: 0 }}
+      lg={{ span: 4, offset: 0 }}
+      className="bg-dark rounded shadow mt-1 mb-1 mr-1 ml-1"
+      style={options}
     >
       <Row className="justify-content-center">
         <h1 className="text-light">News</h1>
       </Row>
 
-      <section style={options}>
+      <section>
         {news.map((article, i) => (
           <article key={i}>
-            <Card className="animate__animated animate__fadeIn">
+            <Card className="animate__animated animate__fadeIn mb-1">
               <Card.Body>
                 <Card.Title>{article.title}</Card.Title>
                 <p>{article.contents}</p>
