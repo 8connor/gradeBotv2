@@ -1,6 +1,6 @@
 const path = require("path");
-const PORT = 6000;
-// const http = require("http");
+const PORT = 3300;
+const http = require("http");
 const cors = require("cors")
 const express = require("express");
 const app = express();
@@ -28,18 +28,15 @@ app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "../client/public/index.html"));
 });
 
-app.listen(PORT, ()=>{
-  console.log(`listening on ${PORT}`)
-})
 
-// const server = http.createServer(app);
+const server = http.createServer(app);
 
-// const io = require("socket.io")(server);
+const io = require("socket.io")(server);
 
-// io.on("connection", (socket) => {
-//   console.log("a user has connected");
-//   socket.broadcast.emit("hello")
-// });
+io.on("connection", (socket) => {
+  socket.on("chat message", (msg) =>{
+    console.log(msg)
+  })
+});
 
-
-// server.listen(PORT, () => console.log(`listening on ${PORT}`));
+server.listen(PORT, () => console.log(`listening on ${PORT}`));
