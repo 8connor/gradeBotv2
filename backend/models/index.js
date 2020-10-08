@@ -2,5 +2,6 @@ module.exports = {
     User: require("./User"),
     News: require("./News"),
     Assignment: require("./Assignment"),
-    Classroom: require("./Classroom")
+    Classroom: require("./Classroom"),
+    Contact: require("./Contact")
 }

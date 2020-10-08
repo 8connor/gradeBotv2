@@ -30,7 +30,7 @@ function News() {
       sm={{ span: 4, offset: 0 }}
       md={{ span: 4, offset: 0 }}
       lg={{ span: 4, offset: 0 }}
-      className="bg-dark rounded shadow mt-1 mb-1 mr-1 ml-1"
+      className="bg-dark rounded shadow mt-1"
       style={options}
     >
       <Row className="justify-content-center">
@@ -40,7 +40,7 @@ function News() {
       <section>
         {news.map((article, i) => (
           <article key={i}>
-            <Card className="animate__animated animate__fadeIn mb-1">
+            <Card className="animate__animated animate__fadeIn mt-1 mb-1">
               <Card.Body>
                 <Card.Title>{article.title}</Card.Title>
                 <p>{article.contents}</p>

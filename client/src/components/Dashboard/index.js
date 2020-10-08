@@ -8,10 +8,10 @@ import Chat from "./Chat"
 function Dashboard() {
   return (
     <Container>
-      <Row className="mt-5 animate__animated animate__fadeIn">
+      <Row className="mt-5 mb-5 animate__animated animate__fadeIn justify-content-center">
         <Averages />
         <News />
-        {/* <Chat /> */}
+        <Chat />
       </Row>
     </Container>
   );

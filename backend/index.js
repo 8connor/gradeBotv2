@@ -1,7 +1,7 @@
 const path = require("path");
 const PORT = 3300;
 const http = require("http");
-const cors = require("cors")
+const cors = require("cors");
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
@@ -22,21 +22,20 @@ app.use(express.json());
 
 app.use("/api", routes.News);
 app.use("/api", routes.User);
-
+app.use("/api", routes.Contact);
 
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "../client/public/index.html"));
 });
-
 
 const server = http.createServer(app);
 
 const io = require("socket.io")(server);
 
 io.on("connection", (socket) => {
-  socket.on("chat message", (msg) =>{
-    console.log(msg)
-  })
+  socket.on("chat message", (msg) => {
+    io.emit("chat message", msg);
+  });
 });
 
 server.listen(PORT, () => console.log(`listening on ${PORT}`));

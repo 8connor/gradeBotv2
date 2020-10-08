@@ -43,10 +43,9 @@ function Averages() {
 
   return (
     <Col
-      sm={{ span: 6, offset: 0 }}
-      md={{ span: 6, offset: 0 }}
-      lg={{ span: 6, offset: 0 }}
-      className="mt-1 mb-1 mr-1 ml-1"
+      sm={{ span: 8, offset: 0 }}
+      md={{ span: 8, offset: 0 }}
+      lg={{ span: 8, offset: 0 }}
     >
       <CanvasJSChart options={options} />
     </Col>
