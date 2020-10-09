@@ -6,18 +6,27 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const JWT = require("jsonwebtoken");
+const passport = require("passport");
+const bodyParser = require("body-parser")
 
-// This package will help us keep track of user sessions.
-const session = require("express-session");
 
 //routes being brought in from different file. Recognizes index.js.
 const { News, User, Contact } = require("./routes");
 
-app.use(
-  session({
-    secret: JWT.sign(),
-  })
-);
+const signToken = (userID) => {
+  // this will return the token
+  // we shouldn't send sensitive information here
+  return JWT.sign(
+    {
+      iss: "server", // who sent it
+      sub: userID, // subject - who is it for
+    },
+    "server",
+    { expiresIn: "1h" }
+  );
+  // when you sign you're creating this jwt token, this has to match with the secret key in passport config file
+  // 5000 milliseconds
+};
 
 mongoose.connect(
   `mongodb://localhost:27017/gradeBotv2`,
@@ -26,9 +35,15 @@ mongoose.connect(
     console.log("Successfully connected to Database");
   }
 );
+
+require("./config/passport");
+
 // Cross origin requests.
 app.use(cors());
-
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json())
+// Initialize passport.
+app.use(passport.initialize());
 app.use(express.json());
 
 //api routes for our api calls.
