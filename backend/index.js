@@ -5,12 +5,19 @@ const cors = require("cors");
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
+const JWT = require("jsonwebtoken");
 
 // This package will help us keep track of user sessions.
 const session = require("express-session");
 
 //routes being brought in from different file. Recognizes index.js.
-const {News, User, Contact} = require("./routes");
+const { News, User, Contact } = require("./routes");
+
+app.use(
+  session({
+    secret: JWT.sign(),
+  })
+);
 
 mongoose.connect(
   `mongodb://localhost:27017/gradeBotv2`,
