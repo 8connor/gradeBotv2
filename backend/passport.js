@@ -1,11 +1,9 @@
-const jwtSecret = require("../jwtConfig");
+const jwtSecret = require("./jwtConfig");
 const bcrypt = require("bcrypt");
-
-const db = require("../models");
-
+const db = require("./models");
 const passport = require("passport"),
   localStrategy = require("passport-local").Strategy,
-  JWTstrategy = require("passport-jwt").Strategy,
+  JWTStrategy = require("passport-jwt").Strategy,
   ExtractJWT = require("passport-jwt").ExtractJwt;
 
 passport.use(
@@ -21,18 +19,20 @@ passport.use(
         db.User.find({
           username: username,
         }).then((user) => {
-          if (user != null) {
-            console.log("username is taken!");
-            return done(null, false, { message: "username taken!" });
-          } else {
+          if (user.length === 0) {
             bcrypt.hash(password, 12).then((hashedPassword) => {
-              db.User.create({ username, password: hashedPassword }).then(
-                (user) => {
-                  console.log("user created");
-                  return done(null, user);
-                }
-              );
+              db.User.create({
+                username: username,
+                password: hashedPassword,
+                accessType: "admin",
+              }).then((user) => {
+                console.log("user created");
+                return done(null, user);
+              });
             });
+          }
+          if (user[0].username === username) {
+            return done(null, false, { message: "failed!" });
           }
         });
       } catch (err) {
@@ -81,19 +81,19 @@ const opts = {
 
 passport.use(
   "jwt",
-  new JWTstrategy(opts, (jwt_payload, done) => {
+  new JWTStrategy(opts, (jwt_payload, done) => {
     try {
       db.User.find({ username: jwt_payload.id }).then((user) => {
         if (user) {
           console.log("user found in db by passport");
           done(null, user);
         } else {
-            console.log('user not found in db');
-            done(null, false)
+          console.log("user not found in db");
+          done(null, false);
         }
       });
-    } catch (err){
-        done(err)
+    } catch (err) {
+      done(err);
     }
   })
 );

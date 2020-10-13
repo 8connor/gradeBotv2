@@ -1,5 +1,6 @@
 const express = require("express");
 const routes = express.Router();
+const passport = require("passport");
 
 var db = require("../models");
 
@@ -11,17 +12,22 @@ routes.get("/test", (req, res) => {
 
 // ============ Post ================
 
-routes.post("/register", (req, res) => {
-  var user = req.body;
-
-  // db.User.create(user).then(newUser => {
-
-  //     res.json(newUser)
-  // }).catch(err => console.log(err));
-
-  res.json({
-    hello: "world",
-  });
+routes.post("/register", (req, res, next) => {
+  passport.authenticate("register", (err, user, info) => {
+    if (err) {
+      console.log(err);
+    }
+    if (info != undefined) {
+      console.log(info.message);
+      res.send(info.message);
+    } else {
+      req.logIn(user, (err) => {
+        db.User.create(user).then((user) => {
+          res.status(200).send({ message: "user created!" });
+        });
+      });
+    }
+  })(req, res, next);
 });
 
 module.exports = routes;

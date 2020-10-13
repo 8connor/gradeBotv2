@@ -13,20 +13,20 @@ const bodyParser = require("body-parser")
 //routes being brought in from different file. Recognizes index.js.
 const { News, User, Contact } = require("./routes");
 
-const signToken = (userID) => {
-  // this will return the token
-  // we shouldn't send sensitive information here
-  return JWT.sign(
-    {
-      iss: "server", // who sent it
-      sub: userID, // subject - who is it for
-    },
-    "server",
-    { expiresIn: "1h" }
-  );
-  // when you sign you're creating this jwt token, this has to match with the secret key in passport config file
-  // 5000 milliseconds
-};
+// const signToken = (userID) => {
+//   // this will return the token
+//   // we shouldn't send sensitive information here
+//   return JWT.sign(
+//     {
+//       iss: "server", // who sent it
+//       sub: userID, // subject - who is it for
+//     },
+//     "server",
+//     { expiresIn: "1h" }
+//   );
+//   // when you sign you're creating this jwt token, this has to match with the secret key in passport config file
+//   // 5000 milliseconds
+// };
 
 mongoose.connect(
   `mongodb://localhost:27017/gradeBotv2`,
@@ -36,7 +36,7 @@ mongoose.connect(
   }
 );
 
-require("./config/passport");
+require("./passport");
 
 // Cross origin requests.
 app.use(cors());
