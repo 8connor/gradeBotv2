@@ -3,13 +3,23 @@ import Card from "react-bootstrap/Card";
 import FormControl from "react-bootstrap/FormControl";
 import InputGroup from "react-bootstrap/InputGroup";
 import Button from "react-bootstrap/Button";
+import Axios from "axios";
 import Row from "react-bootstrap/Row";
 
 function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  
+  const handleLogin = () => {
+    const loginObj = {
+      username: document.getElementById("email").value,
+      password: document.getElementById("password").value,
+    };
 
-  const handleLogin = () => {};
+    Axios.post("/api/login", loginObj)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => console.log(err));
+  };
 
   return (
     <Card className="shadow">
@@ -19,12 +29,13 @@ function Login() {
           <InputGroup className="mb-3">
             <InputGroup.Prepend>
               <InputGroup.Text id="inputGroup-sizing-default">
-                Email:
+                Username:
               </InputGroup.Text>
             </InputGroup.Prepend>
             <FormControl
               aria-label="Default"
               aria-describedby="inputGroup-sizing-default"
+              id="email"
             />
           </InputGroup>
           <InputGroup className="mb-3">
@@ -36,9 +47,10 @@ function Login() {
             <FormControl
               aria-label="Default"
               aria-describedby="inputGroup-sizing-default"
+              id="password"
             />
           </InputGroup>
-          <Button>submit</Button>
+          <Button onClick={handleLogin}>submit</Button>
         </Row>
       </Card.Body>
     </Card>

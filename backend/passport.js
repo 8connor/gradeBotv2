@@ -3,8 +3,7 @@ const bcrypt = require("bcrypt");
 const db = require("./models");
 const passport = require("passport"),
   localStrategy = require("passport-local").Strategy,
-  JWTStrategy = require("passport-jwt").Strategy,
-  ExtractJWT = require("passport-jwt").ExtractJwt;
+  JWTStrategy = require("passport-jwt").Strategy
 
 passport.use(
   "register",
@@ -82,8 +81,6 @@ const cookieExtractor = (req) => {
     token = req.cookies["token"];
   }
 
-  console.log(token)
-
   return token;
 };
 
@@ -94,9 +91,10 @@ const opts = {
 
 passport.use(
   "jwt",
-  new JWTStrategy(opts, (jwt_payload, done) => {
+  new JWTStrategy(opts, (payload, done) => {
     try {
-      db.User.find({ _id: jwt_payload.id }).then((user) => {
+      db.User.find({ _id: payload.id[0]._id }).then((user) => {
+        console.log(payload)
         if (user) {
           console.log("user found in db by passport");
           done(null, user);
@@ -104,6 +102,7 @@ passport.use(
           console.log("user not found in db");
           done(null, false);
         }
+
       });
     } catch (err) {
       done(err);
