@@ -50,14 +50,14 @@ passport.use(
       passwordField: "password",
       session: false,
     },
-
     (username, password, done) => {
       try {
         db.User.find({ username: username }).then((user) => {
-          if (user != null) {
+          console.log("this is the passport login")
+          if (user == undefined) {
             return done(null, false, { message: "bad username" });
           } else {
-            bcrypt.compare(password, user.password).then((response) => {
+            bcrypt.compare(password, user[0].password).then((response) => {
               if (response != true) {
                 console.log("incorrect password");
                 return done(null, false, { message: "incorrect password!" });
