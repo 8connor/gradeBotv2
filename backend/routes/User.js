@@ -13,6 +13,10 @@ routes.get(
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
     const { username, accessType } = req.user;
+
+    console.log("made it to get route")
+
+    console.log(req.user)
     res
       .status(200)
       .json({ authenticated: true, user: { username, accessType } });
@@ -25,8 +29,8 @@ routes.post("/login", (req, res, next) => {
   console.log("just hit the login");
 
   passport.authenticate("login", (err, user, info) => {
-    if (err){
-      console.log(err)
+    if (err) {
+      console.log(err);
     }
     if (info != undefined) {
       res.send(info.message);
@@ -34,14 +38,13 @@ routes.post("/login", (req, res, next) => {
       req.logIn(user, (err) => {
         db.User.find({
           username: user.username,
-        }).then((user) => {
-          const token = jwt.sign({ id: user.username }, jwtSecret.secret);
+        }).then(async (user) => {
+          const token = jwt.sign({ id: user._id }, jwtSecret.secret);
 
-          res.status(200).send({
-            auth: true,
-            token: token,
-            message: "user found & logged in.",
-          });
+          res.cookie("token", token, { httpOnly: true, sameSite: true });
+
+          
+          res.status(200).send({ authenticated: true });
         });
       });
     }

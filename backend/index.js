@@ -7,7 +7,8 @@ const app = express();
 const mongoose = require("mongoose");
 const JWT = require("jsonwebtoken");
 const passport = require("passport");
-const bodyParser = require("body-parser")
+const bodyParser = require("body-parser");
+const cookieParser = require("cookie-parser");
 
 
 //routes being brought in from different file. Recognizes index.js.
@@ -40,6 +41,7 @@ require("./passport");
 
 // Cross origin requests.
 app.use(cors());
+app.use(cookieParser());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json())
 // Initialize passport.

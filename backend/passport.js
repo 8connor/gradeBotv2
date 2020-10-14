@@ -53,7 +53,7 @@ passport.use(
     (username, password, done) => {
       try {
         db.User.find({ username: username }).then((user) => {
-          console.log("this is the passport login")
+          console.log("this is the passport login");
           if (user == undefined) {
             return done(null, false, { message: "bad username" });
           } else {
@@ -74,8 +74,21 @@ passport.use(
   )
 );
 
+const cookieExtractor = (req) => {
+  // extracting the jwt token from the request
+  let token = null;
+
+  if (req && req.cookies) {
+    token = req.cookies["token"];
+  }
+
+  console.log(token)
+
+  return token;
+};
+
 const opts = {
-  jwtFromRequest: ExtractJWT.fromAuthHeaderWithScheme("JWT"),
+  jwtFromRequest: cookieExtractor,
   secretOrKey: jwtSecret.secret,
 };
 
@@ -83,7 +96,7 @@ passport.use(
   "jwt",
   new JWTStrategy(opts, (jwt_payload, done) => {
     try {
-      db.User.find({ username: jwt_payload.id }).then((user) => {
+      db.User.find({ _id: jwt_payload.id }).then((user) => {
         if (user) {
           console.log("user found in db by passport");
           done(null, user);
