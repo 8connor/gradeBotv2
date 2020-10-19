@@ -5,29 +5,13 @@ const cors = require("cors");
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
-const JWT = require("jsonwebtoken");
 const passport = require("passport");
-const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 
 
 //routes being brought in from different file. Recognizes index.js.
 const { News, User, Contact } = require("./routes");
 
-// const signToken = (userID) => {
-//   // this will return the token
-//   // we shouldn't send sensitive information here
-//   return JWT.sign(
-//     {
-//       iss: "server", // who sent it
-//       sub: userID, // subject - who is it for
-//     },
-//     "server",
-//     { expiresIn: "1h" }
-//   );
-//   // when you sign you're creating this jwt token, this has to match with the secret key in passport config file
-//   // 5000 milliseconds
-// };
 
 mongoose.connect(
   `mongodb://localhost:27017/gradeBotv2`,
@@ -41,9 +25,8 @@ require("./passport");
 
 // Cross origin requests.
 app.use(cors());
+// This middleware package gets the cookies of the requests sent to the server.
 app.use(cookieParser());
-app.use(bodyParser.urlencoded({extended: false}));
-app.use(bodyParser.json())
 // Initialize passport.
 app.use(passport.initialize());
 app.use(express.json());
@@ -64,10 +47,12 @@ const server = http.createServer(app);
 const io = require("socket.io")(server);
 
 // When you connect it will listen for a chat message. if you message in the chat it will emit that message.
+// TODO: this is just sitting here for testing purposes. This will be moved to a different folder eventually.
 io.on("connection", (socket) => {
   socket.on("chat message", (msg) => {
     io.emit("chat message", msg);
   });
 });
 
+// This sets the server to listen on the port defined at the top.
 server.listen(PORT, () => console.log(`listening on ${PORT}`));

@@ -7,7 +7,7 @@ import Axios from "axios";
 import Row from "react-bootstrap/Row";
 
 function Login() {
-  
+
   const handleLogin = () => {
     const loginObj = {
       username: document.getElementById("email").value,
@@ -47,6 +47,7 @@ function Login() {
             <FormControl
               aria-label="Default"
               aria-describedby="inputGroup-sizing-default"
+              type="password"
               id="password"
             />
           </InputGroup>
