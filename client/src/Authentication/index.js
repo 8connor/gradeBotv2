@@ -1,16 +1,19 @@
 import React, { createContext, useEffect, useState } from "react";
+import Axios from "axios";
 
 export const AuthContext = createContext();
 
 export default ({ children }) => {
-  const [authenticated, setAuthenticated] = useState(false);
+  const [user, setUser] = useState();
   const [load, setLoad] = useState(false);
 
   useEffect(() => {
     const call = async () => {
       const isAuth = await Axios.get("/api/authenticated")
         .then((data) => {
-          setAuthenticated(data.data.authenticated);
+          console.log("ran the auth")
+          console.log(data.data)
+          setUser(data.data);
         })
         .catch((err) => console.log(err));
 
@@ -23,9 +26,7 @@ export default ({ children }) => {
   return (
     <div>
       {load ? (
-        <AuthContext.Provider value={{ authenticated, setAuthenticated }}>
-          {children}
-        </AuthContext.Provider>
+        <AuthContext.Provider value={user}>{children}</AuthContext.Provider>
       ) : (
         <div>loading...</div>
       )}
